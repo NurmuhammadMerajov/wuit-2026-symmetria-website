@@ -7,11 +7,9 @@ export interface HeroSectionProps {
 }
 
 export default function HeroSection({ className = '' }: HeroSectionProps) {
-  const [mounted, setMounted] = useState<boolean>(false);
-  const [timestamp, setTimestamp] = useState<string>('00:00:00 UTC');
+  const [timestamp, setTimestamp] = useState<string>('');
 
   useEffect(() => {
-    setMounted(true);
     const updateTime = () => {
       const now = new Date();
       setTimestamp(
@@ -96,7 +94,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
           <span>FEED: ENCRYPTED_H265</span>
           <span className="w-2 h-2 border-t-2 border-r-2 border-cyan-400" />
         </div>
-        <div className="pr-3 text-slate-500 text-[9px]">{mounted ? timestamp : 'LIVE_FEED_CONNECTING'}</div>
+        <div className="pr-3 text-slate-500 text-[9px]">{timestamp || 'LIVE_FEED_CONNECTING'}</div>
       </div>
 
       <div className="pointer-events-none absolute bottom-6 left-6 z-20 hidden sm:flex items-end gap-1.5 text-[10px] font-mono text-cyan-500/50">

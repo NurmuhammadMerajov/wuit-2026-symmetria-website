@@ -28,7 +28,6 @@ export default function VideoTimelinePlayer({ videoSrc, events, duration }: Vide
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>(undefined);
 
   const formatTime = useCallback((seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -36,21 +35,30 @@ export default function VideoTimelinePlayer({ videoSrc, events, duration }: Vide
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   }, []);
 
-  const updateProgress = useCallback(() => {
-    if (videoRef.current) {
-      setCurrentTime(videoRef.current.currentTime);
-      animationFrameRef.current = requestAnimationFrame(updateProgress);
+  useEffect(() => {
+    let animId: number;
+    const loop = () => {
+      if (videoRef.current) {
+        setCurrentTime(videoRef.current.currentTime);
+      }
+      animId = requestAnimationFrame(loop);
+    };
+
+    if (isPlaying) {
+      animId = requestAnimationFrame(loop);
     }
-  }, []);
+
+    return () => {
+      if (animId) cancelAnimationFrame(animId);
+    };
+  }, [isPlaying]);
 
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
-        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       } else {
         videoRef.current.play();
-        animationFrameRef.current = requestAnimationFrame(updateProgress);
       }
       setIsPlaying(!isPlaying);
     }
@@ -100,7 +108,6 @@ export default function VideoTimelinePlayer({ videoSrc, events, duration }: Vide
       video.addEventListener('ended', onEnded);
       return () => {
         video.removeEventListener('ended', onEnded);
-        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       };
     }
   }, []);
