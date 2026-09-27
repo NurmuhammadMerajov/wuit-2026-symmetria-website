@@ -1,0 +1,92 @@
+{
+  "video_id": "traffic_cam_001",
+  "duration": 195,
+  "fps": 30,
+  "events": [
+    {
+      "id": 1,
+      "type": "accident",
+      "confidence": 0.92,
+      "start_time": 23.4,
+      "end_time": 31.2,
+      "severity": "high",
+      "description": "Rear-end collision detected at intersection"
+    },
+    {
+      "id": 2,
+      "type": "jaywalking",
+      "confidence": 0.87,
+      "start_time": 54.1,
+      "end_time": 58.8,
+      "severity": "medium",
+      "description": "Pedestrian crossing outside designated crosswalk"
+    },
+    {
+      "id": 3,
+      "type": "speeding",
+      "confidence": 0.78,
+      "start_time": 102.5,
+      "end_time": 110.3,
+      "severity": "medium",
+      "description": "Vehicle exceeding speed limit by 20km/h"
+    },
+    {
+      "id": 4,
+      "type": "wrong_way",
+      "confidence": 0.95,
+      "start_time": 145.0,
+      "end_time": 152.7,
+      "severity": "critical",
+      "description": "Vehicle driving against traffic flow"
+    },
+    {
+      "id": 5,
+      "type": "illegal_parking",
+      "confidence": 0.83,
+      "start_time": 168.2,
+      "end_time": 180.5,
+      "severity": "low",
+      "description": "Vehicle parked in no-parking zone"
+    }
+  ],
+  "risk_scores": [
+    { "time": 0, "score": 0.12 },
+    { "time": 5, "score": 0.10 },
+    { "time": 10, "score": 0.15 },
+    { "time": 15, "score": 0.18 },
+    { "time": 20, "score": 0.45 },
+    { "time": 23, "score": 0.72 },
+    { "time": 25, "score": 0.92 },
+    { "time": 28, "score": 0.88 },
+    { "time": 31, "score": 0.65 },
+    { "time": 35, "score": 0.38 },
+    { "time": 40, "score": 0.22 },
+    { "time": 45, "score": 0.18 },
+    { "time": 50, "score": 0.22 },
+    { "time": 54, "score": 0.58 },
+    { "time": 56, "score": 0.71 },
+    { "time": 59, "score": 0.52 },
+    { "time": 65, "score": 0.30 },
+    { "time": 75, "score": 0.15 },
+    { "time": 85, "score": 0.18 },
+    { "time": 95, "score": 0.25 },
+    { "time": 100, "score": 0.42 },
+    { "time": 105, "score": 0.68 },
+    { "time": 108, "score": 0.62 },
+    { "time": 112, "score": 0.45 },
+    { "time": 120, "score": 0.25 },
+    { "time": 130, "score": 0.20 },
+    { "time": 140, "score": 0.40 },
+    { "time": 145, "score": 0.78 },
+    { "time": 148, "score": 0.97 },
+    { "time": 152, "score": 0.82 },
+    { "time": 158, "score": 0.45 },
+    { "time": 165, "score": 0.30 },
+    { "time": 170, "score": 0.48 },
+    { "time": 175, "score": 0.42 },
+    { "time": 180, "score": 0.35 },
+    { "time": 185, "score": 0.22 },
+    { "time": 190, "score": 0.15 },
+    { "time": 195, "score": 0.18 }
+  ]
+}
